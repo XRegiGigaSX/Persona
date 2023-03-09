@@ -1,0 +1,11 @@
+Model Information:
+* title:	Acanthus (Draft)
+* source:	https://sketchfab.com/3d-models/acanthus-draft-400a465c985b49c5914ca66988c4cb7c
+* author:	TsunamiLove (https://sketchfab.com/TsunamiLove)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Acanthus (Draft)" (https://sketchfab.com/3d-models/acanthus-draft-400a465c985b49c5914ca66988c4cb7c) by TsunamiLove (https://sketchfab.com/TsunamiLove) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
