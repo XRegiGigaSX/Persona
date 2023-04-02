@@ -6,6 +6,7 @@ import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
+  // const [menuActive, setMenuActive] = useState(false);
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
@@ -13,8 +14,10 @@ const Navbar = () => {
   var fsign = "Portfolio";
 
   return (
-    <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-gradient-to-r from-primary to-transparent`}
+    <motion.nav
+      animate={{height: (toggle ? "15em" : "5em")}}
+      transition={{duration: 0.75}}
+      className={`${styles.paddingX} w-full flex sm:flex-row flex-col items-center py-5 fixed top-0 z-20 bg-gradient-to-r from-primary to-transparent overflow-hidden`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -51,15 +54,28 @@ const Navbar = () => {
             className="w-[28px] h-[28px] object-contain cursor-pointer"
             onClick={() => setToggle(!toggle)}
           /> */}
-          <motion.div className="object-contain cursor-pointer h-[28px] flex flex-col justify-evenly items-center" onClick={() => setToggle(!toggle)}>
-            <hr className="text-white w-[25px]" />
-            <hr className="text-white w-[25px]" />
-            <hr className="text-white w-[25px]" />
+          <motion.div className={`object-contain cursor-pointer h-[28px] flex flex-col ${toggle? "justify-center" : "justify-evenly"} items-center`} onClick={() => setToggle(!toggle)}>
+            <motion.hr 
+              animate={{rotate: (toggle? -45: 0) }} 
+              className="text-white w-[25px]" 
+            />
+            <motion.hr animate={{opacity: (toggle? 0: 1)}} className="text-white w-[25px]" />
+            <motion.hr 
+              animate={{rotate: (toggle? 45: 0), translateY: (toggle?'-0.06em': 0) }} 
+              className="text-white w-[25px]" 
+            />          
           </motion.div>
-          <div
+          
+          
+        </div>
+        
+      </div>
+      <motion.div
+            animate={{opacity: (toggle? 1: 0)}}
+            transition={{duration: 1.4}}
             className={`${
               !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            } p-6 top-20 right-0 mx-4 my-2 min-w-[140px] z-10 w-full`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {navLinks.map((link) => (
@@ -73,14 +89,18 @@ const Navbar = () => {
                     setActive(link.title)
                   }}
                 >
-                  <a href={`#${link.id}`}>{link.title}</a>
+                  <motion.a 
+                    href={`#${link.id}`}
+                    initial={{translateX: "-5em"}}
+                    animate={{translatex: "0"}}
+                  >
+                    {link.title}
+                  </motion.a>
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+          </motion.div>
+    </motion.nav>
   );
 };
 
