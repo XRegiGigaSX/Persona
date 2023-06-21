@@ -1,7 +1,6 @@
 import React, {Suspense, useEffect, useState} from 'react'
-import * as THREE from 'three';
 import {Canvas} from '@react-three/fiber'
-import {meshBounds, OrbitControls, Preload, useGLTF} from '@react-three/drei'
+import {OrbitControls, Preload, useGLTF} from '@react-three/drei'
 import CanvasLoader from '../Loader'
 
 const Computers = ({ isMobile }) => {
@@ -20,8 +19,10 @@ const Computers = ({ isMobile }) => {
         shadow-mapSize={1024}
       />
       <primitive
-        scale={isMobile ? 0.5 : 0.75}
-        position={isMobile ? [0, -2, -0.2] : [0, -3.5, -1.5]}
+        // scale={isMobile ? 0.5 : 0.75}
+        scale={0.75}
+        // position={isMobile ? [0, -2, -0.2] : [0, -3.5, -1.5]}
+        position={[0, -3.5, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
         object={computer.scene}
       />
@@ -70,11 +71,5 @@ const ComputersCanvas = () => {
     </Canvas>
   )
 }
-
-// const ComputersCanvas = () => {
-//   return(
-//     <div>hi</div>
-//   )
-// }
 
 export default ComputersCanvas
