@@ -33,23 +33,23 @@ const Computers = ({ isMobile }) => {
 
 const ComputersCanvas = () => {
 
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 500px)')
+  // useEffect(() => {
+  //   const mediaQuery = window.matchMedia('(max-width: 500px)')
 
-    setIsMobile(mediaQuery.matches)
+  //   setIsMobile(mediaQuery.matches)
 
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
-    }
+  //   const handleMediaQueryChange = (event) => {
+  //     setIsMobile(event.matches);
+  //   }
 
-    mediaQuery.addEventListener('change', handleMediaQueryChange)
+  //   mediaQuery.addEventListener('change', handleMediaQueryChange)
 
-    return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange);
-    }
-  }, [])
+  //   return () => {
+  //     mediaQuery.removeEventListener('change', handleMediaQueryChange);
+  //   }
+  // }, [])
 
   return (
     <Canvas
@@ -67,7 +67,7 @@ const ComputersCanvas = () => {
         <Computers isMobile={isMobile} />
       </Suspense>
 
-      <Preload all />
+      {/* <Preload all /> */}
     </Canvas>
   )
 }
