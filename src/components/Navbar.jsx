@@ -14,7 +14,7 @@ const Navbar = () => {
   var fsign = "Portfolio";
 
   return (
-    <motion.nav
+    <motion.div
       animate={{height: (toggle ? "15em" : "5em")}}
       transition={{duration: 0.75}}
       className={`${styles.paddingX} w-full flex sm:flex-row flex-col items-center py-5 fixed top-0 z-20 bg-gradient-to-r from-primary to-transparent overflow-hidden`}
@@ -100,7 +100,7 @@ const Navbar = () => {
               ))}
             </ul>
           </motion.div>
-    </motion.nav>
+    </motion.div>
   );
 };
 
