@@ -1,7 +1,19 @@
 import React, {Suspense, useEffect, useState} from 'react'
-import {Canvas} from '@react-three/fiber'
+import {Canvas, useFrame} from '@react-three/fiber'
 import {OrbitControls, Preload, useGLTF} from '@react-three/drei'
 import CanvasLoader from '../Loader'
+
+// function shipAnim() {
+//   useFrame(() => {
+//     console.log("Hey, I'm executing every frame!")
+//   })
+//   return (
+//     <mesh>
+//       <boxGeometry />
+//       <meshBasicMaterial color="royalblue" />
+//     </mesh>
+//   )
+// }
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF('./desktop_pc/scene.gltf')
@@ -33,23 +45,25 @@ const Computers = ({ isMobile }) => {
 
 const ComputersCanvas = () => {
 
-  // const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // useEffect(() => {
-  //   const mediaQuery = window.matchMedia('(max-width: 500px)')
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 500px)')
 
-  //   setIsMobile(mediaQuery.matches)
+    setIsMobile(mediaQuery.matches)
 
-  //   const handleMediaQueryChange = (event) => {
-  //     setIsMobile(event.matches);
-  //   }
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    }
 
-  //   mediaQuery.addEventListener('change', handleMediaQueryChange)
+    mediaQuery.addEventListener('change', handleMediaQueryChange)
 
-  //   return () => {
-  //     mediaQuery.removeEventListener('change', handleMediaQueryChange);
-  //   }
-  // }, [])
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+    }
+  }, [])
+
+  if(isMobile) return <></>
 
   return (
     <Canvas
