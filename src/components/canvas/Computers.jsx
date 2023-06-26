@@ -1,25 +1,20 @@
-import React, {Suspense, useEffect, useState} from 'react'
+import React, {Suspense, useEffect, useState, useRef} from 'react'
 import {Canvas, useFrame} from '@react-three/fiber'
-import {OrbitControls, Preload, useGLTF} from '@react-three/drei'
+import {OrbitControls, Preload, useGLTF, useAnimations} from '@react-three/drei'
 import CanvasLoader from '../Loader'
 
-// function shipAnim() {
-//   useFrame(() => {
-//     console.log("Hey, I'm executing every frame!")
-//   })
-//   return (
-//     <mesh>
-//       <boxGeometry />
-//       <meshBasicMaterial color="royalblue" />
-//     </mesh>
-//   )
-// }
 
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF('./desktop_pc/scene.gltf')
+  const computer = useGLTF('./smol_pc/scene.gltf')
+  const group = useRef();
+  const {actions, names, mixer} = useAnimations(computer.animations, group)
+
+  useEffect(() => {
+    actions.Animation.play();
+  }, [mixer])
 
   return (
-    <mesh>
+    <mesh ref={group}>
       <hemisphereLight intensity={0.15} groundColor="black" />
       <pointLight intensity={1} />
       <spotLight
@@ -31,11 +26,14 @@ const Computers = ({ isMobile }) => {
         shadow-mapSize={1024}
       />
       <primitive
+        scale={isMobile ? 0.4 : 1.55}
         // scale={isMobile ? 0.5 : 0.75}
-        scale={0.75}
+        // scale={0.75}
+        position={isMobile ? [0, -2, -0.2] : [0, -3.5, -1.5]}
         // position={isMobile ? [0, -2, -0.2] : [0, -3.5, -1.5]}
-        position={[0, -3.5, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        // position={[0, -3.5, -1.5]}
+        rotation={[0, 0, 0]}
+        // rotation={[-0.01, -0.2, -0.1]}
         object={computer.scene}
       />
 
@@ -63,7 +61,6 @@ const ComputersCanvas = () => {
     }
   }, [])
 
-  if(isMobile) return <></>
 
   return (
     <Canvas
@@ -74,6 +71,8 @@ const ComputersCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls 
+          autoRotate
+          autoRotateSpeed={1.2}
           enableZoom={false}
           maxPolarAngle={Math.PI/2}
           minPolarAngle={Math.PI/2}
@@ -81,7 +80,7 @@ const ComputersCanvas = () => {
         <Computers />
       </Suspense>
 
-      {/* <Preload all /> */}
+      <Preload all />
     </Canvas>
   )
 }

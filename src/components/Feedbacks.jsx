@@ -12,7 +12,7 @@ const Feedbacks = () => {
         <motion.div
          variants={textVariant()}
         >
-          {/* <p className={}>What others say</p> */}
+          <p>Certifications</p>
         </motion.div>
 
       </div>

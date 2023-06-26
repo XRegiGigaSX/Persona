@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import {motion} from 'framer-motion'
+import React, { useState } from "react";
+import { motion } from 'framer-motion'
 import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+// import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
   // const [menuActive, setMenuActive] = useState(false);
